@@ -27,8 +27,7 @@ public class MainPage {
                     Debit.handleDebit(scanner, userId);
                     break;
                 case 2:
-                    // Handle Credit
-                    System.out.println("Credit selected");
+                    Credit.handleCredit(scanner, userId);
                     break;
                 case 3:
                     // Handle History

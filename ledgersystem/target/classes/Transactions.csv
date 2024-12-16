@@ -1,2 +1,7 @@
 transaction_id,user_id,transaction_type,amount,description,date
 1,1,Debit,500.0,test,2024-12-16
+2,1,Credit,300.0,test,2024-12-16
+3,1,Debit,500.0,test,2024-12-16
+4,1,Debit,200.0,test,2024-12-16
+5,1,Debit,100.0,add amount,2024-12-16
+6,1,Credit,500.0,testcredit,2024-12-16

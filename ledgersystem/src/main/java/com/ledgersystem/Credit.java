@@ -3,16 +3,16 @@ import java.util.Scanner;
 import java.io.*;
 import java.time.LocalDate;
 
-public class Debit {
-    public static void handleDebit(Scanner scanner, String userId) {
-        System.out.println("== Debit Transaction ==");
-        System.out.print("Enter amount to debit: ");
+public class Credit {
+    public static void handleCredit(Scanner scanner, String userId) {
+        System.out.println("== Credit Transaction ==");
+        System.out.print("Enter amount to credit: ");
         double amount = scanner.nextDouble();
         scanner.nextLine(); // Consume newline
         System.out.print("Enter description: ");
         String description = scanner.nextLine();
 
-        // Perform debit calculation and update balance
+        // Perform credit calculation and update balance
         double newBalance = updateBalance(userId, amount);
 
         // Write transaction details to Transaction.csv
@@ -22,7 +22,7 @@ public class Debit {
                 if (transactionId == 0) {
                     bw.newLine(); // Skip one line if it's the first transaction
                 }
-                bw.write((transactionId + 1) + "," + userId + "," + "Debit" + "," + amount + "," + description + "," + LocalDate.now());
+                bw.write((transactionId + 1) + "," + userId + "," + "Credit" + "," + amount + "," + description + "," + LocalDate.now());
                 bw.newLine();
                 System.out.println("Transaction recorded successfully. New balance: " + newBalance);
             }
@@ -43,7 +43,7 @@ public class Debit {
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 if (values[0].equals(userId)) {
-                    balance = Double.parseDouble(values[1]) + amount;
+                    balance = Double.parseDouble(values[1]) - amount;
                     bw.write(userId + "," + balance);
                     bw.newLine();
                     userFound = true;
@@ -53,7 +53,7 @@ public class Debit {
                 }
             }
             if (!userFound) {
-                balance = amount;
+                balance = -amount;
                 bw.write(userId + "," + balance);
                 bw.newLine();
             }
