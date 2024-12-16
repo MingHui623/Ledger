@@ -15,7 +15,10 @@ public class Main {
 
         switch (choice) {
             case 1:
-                CredentialChecker.login(scanner);
+                String username = CredentialChecker.login(scanner);
+                if (username != null) {
+                    MainPage.showMainPage(username);
+                }
                 break;
             case 2:
                 CredentialChecker.register(scanner);

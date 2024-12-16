@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 
 public class CredentialChecker {
 
-    public static void login(Scanner scanner) {
+    public static String login(Scanner scanner) {
         System.out.println("== Please enter your email and password ==");
         while (true) {
             String email;
@@ -28,20 +28,14 @@ public class CredentialChecker {
 
             try (BufferedReader br = new BufferedReader(new FileReader("ledgersystem\\src\\main\\resources\\User.csv"))) {
                 String line;
-                boolean loginSuccessful = false;
                 while ((line = br.readLine()) != null) {
                     String[] values = line.split(",");
                     if (values[2].equals(email) && values[3].equals(hashedPassword)) {
-                        loginSuccessful = true;
-                        break;
+                        System.out.println("Login successful for user: " + email);
+                        return values[1]; // Return the username
                     }
                 }
-                if (loginSuccessful) {
-                    System.out.println("Login successful for user: " + email);
-                    break;
-                } else {
-                    System.out.println("Invalid email or password. Please try again.");
-                }
+                System.out.println("Invalid email or password. Please try again.");
             } catch (IOException e) {
                 System.out.println("An error occurred while reading the user data.");
             }
