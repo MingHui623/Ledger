@@ -2,6 +2,7 @@ package com.ledgersystem;
 import java.util.Scanner;
 import java.io.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Credit {
     public static void handleCredit(Scanner scanner, String userId) {
@@ -22,7 +23,8 @@ public class Credit {
                 if (transactionId == 0) {
                     bw.newLine(); // Skip one line if it's the first transaction
                 }
-                bw.write((transactionId + 1) + "," + userId + "," + "Credit" + "," + amount + "," + description + "," + LocalDate.now());
+                String formattedDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                bw.write((transactionId + 1) + "," + userId + "," + "Credit" + "," + amount + "," + description + "," + formattedDate);
                 bw.newLine();
                 System.out.println("Transaction recorded successfully. New balance: " + newBalance);
             }

@@ -32,8 +32,7 @@ public class MainPage {
                     Credit.handleCredit(scanner, userId);
                     break;
                 case 3:
-                    // Handle History
-                    System.out.println("History selected");
+                    History.showHistory(scanner, userId);
                     break;
                 case 4:
                     // Handle Savings
