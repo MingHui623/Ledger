@@ -31,7 +31,6 @@ public class CredentialChecker {
                 while ((line = br.readLine()) != null) {
                     String[] values = line.split(",");
                     if (values[2].equals(email) && values[3].equals(hashedPassword)) {
-                        System.out.println("Login successful for user: " + email);
                         return values[1]; // Return the username
                     }
                 }
@@ -62,9 +61,9 @@ public class CredentialChecker {
         String hashedPassword = hashPassword(password);
 
         try (BufferedReader br = new BufferedReader(new FileReader("ledgersystem\\src\\main\\resources\\User.csv"))) {
-            long userId = br.lines().count(); // Count the number of lines to determine the next user ID
+            long userId = br.lines().skip(1).count(); // Skip the header line and count the number of lines to determine the next user ID
             try (BufferedWriter bw = new BufferedWriter(new FileWriter("ledgersystem\\src\\main\\resources\\User.csv", true))) {
-                bw.write(userId + "," + name + "," + email + "," + hashedPassword);
+                bw.write((userId + 1) + "," + name + "," + email + "," + hashedPassword);
                 bw.newLine();
                 System.out.println("Registration successful for user: " + email);
             }
