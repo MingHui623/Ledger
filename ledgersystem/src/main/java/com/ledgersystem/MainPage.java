@@ -1,11 +1,13 @@
 package com.ledgersystem;
 import java.util.Scanner;
+import java.io.*;
 
 public class MainPage {
     public static void showMainPage(String username, String userId) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("== Welcome, " + username + " ==");
-        System.out.println("Balance:");
+        double balance = getCurrentBalance(userId);
+        System.out.println("Balance: " + balance);
         System.out.println("Savings:");
         System.out.println("Loan:");
 
@@ -47,11 +49,28 @@ public class MainPage {
                     break;
                 case 7:
                     // Handle Logout
-                    System.out.println("Thank you for using Ledger System.");
+                    System.out.println("Thank you for using Ledger System,"+ username + "!");
                     return;
                 default:
                     System.out.println("Invalid choice. Please select a valid option.");
             }
         }
+    }
+
+    private static double getCurrentBalance(String userId) {
+        double balance = 0.0;
+        try (BufferedReader br = new BufferedReader(new FileReader("ledgersystem\\src\\main\\resources\\Balance.csv"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                if (values[0].equals(userId)) {
+                    balance = Double.parseDouble(values[1]);
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the balance data: " + e.getMessage());
+        }
+        return balance;
     }
 }
