@@ -8,12 +8,12 @@ import java.util.regex.Matcher;
 
 public class CredentialChecker {
 
-    public static String login(Scanner scanner) {
+    public static String[] login(Scanner scanner) {
         System.out.println("== Please enter your email and password ==");
         while (true) {
             String email;
             while (true) {
-                System.out.println("Email:");
+                System.out.print("Email:");
                 email = scanner.nextLine();
                 if (isValidEmail(email)) {
                     break;
@@ -32,12 +32,12 @@ public class CredentialChecker {
                 while ((line = br.readLine()) != null) {
                     String[] values = line.split(",");
                     if (values[2].equals(email) && values[3].equals(hashedPassword)) {
-                        return values[1]; // Return the username
+                        return new String[]{values[0], values[1]}; // Return the user ID and username
                     }
                 }
                 System.out.println("Invalid email or password. Please try again.");
             } catch (IOException e) {
-                System.out.println("An error occurred while reading the user data.");
+                System.out.println("An error occurred while reading the user data: " + e.getMessage());
             }
         }
     }
@@ -72,7 +72,7 @@ public class CredentialChecker {
                 System.out.println("Registration successful for user: " + name);
             }
         } catch (IOException e) {
-            System.out.println("An error occurred while writing the user data.");
+            System.out.println("An error occurred while writing the user data: " + e.getMessage());
         }
     }
 

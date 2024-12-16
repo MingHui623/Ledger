@@ -15,9 +15,9 @@ public class Main {
 
         switch (choice) {
             case 1:
-                String username = CredentialChecker.login(scanner);
-                if (username != null) {
-                    MainPage.showMainPage(username);
+                String[] userDetails = CredentialChecker.login(scanner);
+                if (userDetails != null) {
+                    MainPage.showMainPage(userDetails[1], userDetails[0]);
                 }
                 break;
             case 2:

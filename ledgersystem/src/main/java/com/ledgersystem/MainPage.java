@@ -2,7 +2,7 @@ package com.ledgersystem;
 import java.util.Scanner;
 
 public class MainPage {
-    public static void showMainPage(String username) {
+    public static void showMainPage(String username, String userId) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("== Welcome, " + username + " ==");
         System.out.println("Balance:");
@@ -24,8 +24,7 @@ public class MainPage {
 
             switch (choice) {
                 case 1:
-                    // Handle Debit
-                    System.out.println("Debit selected");
+                    Debit.handleDebit(scanner, userId);
                     break;
                 case 2:
                     // Handle Credit

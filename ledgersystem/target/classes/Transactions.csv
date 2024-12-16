@@ -1,0 +1,2 @@
+transaction_id,user_id,transaction_type,amount,description,date
+1,1,Debit,500.0,test,2024-12-16
