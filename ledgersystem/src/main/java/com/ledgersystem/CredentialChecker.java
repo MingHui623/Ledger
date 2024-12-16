@@ -69,7 +69,7 @@ public class CredentialChecker {
                 }
                 bw.write((userId + 1) + "," + name + "," + email + "," + hashedPassword);
                 bw.newLine();
-                System.out.println("Registration successful for user: " + email);
+                System.out.println("Registration successful for user: " + name);
             }
         } catch (IOException e) {
             System.out.println("An error occurred while writing the user data.");
