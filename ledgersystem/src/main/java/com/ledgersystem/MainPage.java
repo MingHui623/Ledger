@@ -43,8 +43,7 @@ public class MainPage {
                     System.out.println("Credit Loan selected");
                     break;
                 case 6:
-                    // Handle Deposit Interest Predictor
-                    System.out.println("Deposit Interest Predictor selected");
+                    Interest.handleInterestPrediction(scanner, balance);
                     break;
                 case 7:
                     // Handle Logout

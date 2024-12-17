@@ -8,6 +8,7 @@ public class History {
     public static void showHistory(Scanner scanner, String userId) {
         System.out.println("== Transaction History ==");
         System.out.printf("%-15s %-20s %-10s %-10s %-10s%n", "Date", "Description", "Debit", "Credit", "Balance");
+        System.out.println("---------------------------------------------------------------");
 
         double balance = 0.0;
         try (BufferedReader br = new BufferedReader(new FileReader("ledgersystem\\src\\main\\resources\\Transactions.csv"))) {
@@ -28,7 +29,7 @@ public class History {
                         credit = String.format("%.2f", amount);
                         balance -= amount;
                     }
-                    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
                     SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy");
                     Date parsedDate = inputFormat.parse(date);
                     String formattedDate = outputFormat.format(parsedDate);
