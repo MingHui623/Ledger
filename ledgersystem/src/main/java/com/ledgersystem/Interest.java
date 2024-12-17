@@ -28,7 +28,7 @@ public class Interest {
     }
 
     private static double getInterestRate(int bankChoice) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("d:/FOP WIX1002/CLIledgerSystem/ClIledgerSystem/bank.csv"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("ledgersystem\\src\\main\\resources\\Bank.csv"))) {
             String line = reader.readLine(); // Skip header line
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
