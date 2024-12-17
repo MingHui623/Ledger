@@ -21,7 +21,7 @@ public class CredentialChecker {
                     System.out.println("Invalid email format. Please try again.");
                 }
             }
-            System.out.println("Enter password:");
+            System.out.print("Enter password: ");
             String password = scanner.nextLine();
 
             String hashedPassword = hashPassword(password);
@@ -44,11 +44,11 @@ public class CredentialChecker {
 
     public static void register(Scanner scanner) {
         System.out.println("== Please enter your name, email and password ==");
-        System.out.println("Name:");
+        System.out.print("Name: ");
         String name = scanner.nextLine();
         String email;
         while (true) {
-            System.out.println("Email:");
+            System.out.print("Email: ");
             email = scanner.nextLine();
             if (isValidEmail(email)) {
                 break;
@@ -56,7 +56,7 @@ public class CredentialChecker {
                 System.out.println("Invalid email format. Please try again.");
             }
         }
-        System.out.println("Password:");
+        System.out.print("Password: ");
         String password = scanner.nextLine();
 
         String hashedPassword = hashPassword(password);

@@ -3,3 +3,7 @@ transaction_id,user_id,transaction_type,amount,description,date
 2,1,Credit,300.0,take money out ,17-12-2024
 3,2,Debit,5000.0,test,17-12-2024
 4,2,Credit,300.0,credit amt three hundred,17-12-2024
+5,1,Credit,1000.0,testcredit,17-12-2024
+6,1,Debit,2000.0,credit,17-12-2024
+7,1,Debit,500.0,test,17-12-2024
+8,1,Credit,1000.0,deduct thousand,17-12-2024
