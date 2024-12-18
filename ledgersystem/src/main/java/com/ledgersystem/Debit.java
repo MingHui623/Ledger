@@ -19,10 +19,7 @@ public class Debit {
         // Write transaction details to Transaction.csv
         try (BufferedReader br = new BufferedReader(new FileReader("ledgersystem\\src\\main\\resources\\Transactions.csv"))) {
             long transactionId = br.lines().skip(1).count(); // Skip the header line and count the number of lines to determine the next transaction ID
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter("ledgersystem\\src\\main\\resources\\Transactions.csv", true))) {
-                if (transactionId == 0) {
-                    bw.newLine(); // Skip one line if it's the first transaction
-                }
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("ledgersystem\\src\\main\\resources\\Transactions.csv", true))) {   
                 String formattedDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                 bw.write((transactionId + 1) + "," + userId + "," + "Debit" + "," + amount + "," + description + "," + formattedDate);
                 bw.newLine();
